@@ -1,0 +1,19 @@
+<mat-menu #childMenu="matMenu" [overlapTrigger]="false">
+  <ng-template matMenuContent>
+    <span *ngFor="let category of categories">
+      <!-- Handle branch node menu items -->
+      <span *ngIf="category.leaf == false">
+        <button mat-menu-item color="primary" [matMenuTriggerFor]="menu.childMenu">
+          <span>{{category.name}}</span>
+        </button>
+        <app-category-selector #menu [category]="category" (onCategoryPicked)="returnCategory($event)"></app-category-selector>
+      </span>
+      <!-- Handle leaf node menu items -->
+      <span *ngIf="category.leaf == true">
+        <button mat-menu-item (click)="pickCategory(category)" >
+          <span>{{category.name}}</span>
+        </button>
+      </span>
+    </span>
+  </ng-template>
+</mat-menu>

@@ -1,0 +1,113 @@
+
+  <div class="heading">
+    <h1 class="heading_title">
+      Importuj ofertę
+    </h1>
+  </div>
+  <form role="form" id="importForm" class="importFormClass">
+    <div class="name-card container">
+      <h2 class="name_h2">
+        Tytuł i kategoria
+      </h2>
+      <mat-form-field class="example-full-width" >
+        <input matInput placeholder="Tytuł" [formControl]="textLengthControl" [errorStateMatcher]="matcher" [(ngModel)]="translated_title"  class="name-input" />
+        <mat-error *ngIf="textLengthControl.hasError('maxlength')">
+          Nazwa nie może mieć więcej niż 50 znaków
+        </mat-error>
+      </mat-form-field>
+    
+      <div class="category">
+        <h3 class="category-title">Kategoria</h3>
+        <a mat-raised-button [matMenuTriggerFor]="menu.childMenu" class="category-change">Zmień</a>
+        <app-category-selector #menu (onCategoryPicked)="onCategoryPicked($event)"></app-category-selector>
+      </div>
+      <p *ngIf="category != null">{{category.name}}</p>
+    </div>
+    <div class="attributes-card container">
+      <h2 class="attributes-title">Cechy przedmiotu</h2>
+      <input id="ean" placeholder="EAN" [(ngModel)]="EAN" [ngModelOptions]="{standalone:true}" required class="ean-input" aria-invalid="true" type="text">
+      <mat-form-field>
+        <mat-label>Stan</mat-label>
+        <mat-select>
+          <mat-option value="Nowy">Nowy</mat-option>
+          <mat-option value="Używany">Używany</mat-option>
+          <mat-option value="Po zwrocie">Po zwrocie</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="description-card container">
+      <h2 class="name_h2">
+        Zdjęcia i opis przedmiotu
+      </h2>
+      <div class="photos">
+        <div class="photo-text">
+          <h3 class="photos-title" id>Zdjęcia</h3>
+        </div>
+        <div class="photo-text">
+          <h4 class="first-photo" id>Pierwsze zdjęcie jest miniaturką.</h4>
+        </div>
+        <div class="image-list">
+          <div *ngFor="let image of images" class="img_wrp">
+            <img mat-card-image class="product_image" src={{image}}>
+            <a (click)="deleteItem(image)"> <img class="close" src="https://findicons.com/files/icons/1008/quiet/128/no.png" /> </a>
+          </div>
+        </div>
+      </div>
+      <app-description-container #descriptionView *ngIf="images != null && images.length == imagesCount" [images]="images"></app-description-container>
+    </div>
+    <div class="offer_type container">
+      <h2 class="name_h2">
+        Formaty sprzedaży
+      </h2>
+      <div class="checkbox">
+        <mat-checkbox [(ngModel)]="licytacja" [ngModelOptions]="{standalone:true}">licytacja</mat-checkbox>
+      </div>
+      <div class="checkbox">
+        <mat-checkbox [(ngModel)]="kupteraz" [ngModelOptions]="{standalone:true}">Kup teraz</mat-checkbox>
+      </div>
+      <div class="product_price">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Cena" [(ngModel)]="price" [ngModelOptions]="{standalone: true}" />
+        </mat-form-field>
+      </div>
+      <div class="product_number">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Liczba sztuk" [(ngModel)]="pieces" [ngModelOptions]="{standalone: true}" />
+        </mat-form-field>
+      </div>
+      <div>
+        <label>Czas trwania</label>
+        <mat-radio-group class="time-radio-group">
+          <mat-radio-button class="time-radio-button" [value]="1">
+            do wyczerpania przedmiotów
+          </mat-radio-button>
+          <mat-radio-button class="time-radio-button" [value]="2">
+            na określony czas
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div class="promotion container">
+      <h2 class="name_h2">
+        Opcje promowania
+      </h2>
+      <div class="checkbox">
+        <mat-checkbox [(ngModel)]="wyroznienie" [ngModelOptions]="{standalone:true}">Wyróżnienie + raty zero - 19 zł / 10 dni</mat-checkbox>
+      </div>
+      <div class="checkbox">
+        <mat-checkbox [(ngModel)]="pakietPromo" [ngModelOptions]="{standalone:true}">Pakiet Promo (wyróżnienie + raty zero + podrubienie + podświetlenie)</mat-checkbox>
+      </div>
+      <div class="checkbox">
+        <mat-checkbox [(ngModel)]="podswietlenie" [ngModelOptions]="{standalone:true}">Podświetlenie - 9,00 zł / 10 dni</mat-checkbox>
+      </div>
+      <div class="checkbox">
+        <mat-checkbox [(ngModel)]="pogrubienie" [ngModelOptions]="{standalone:true}">Pogrubienie – 9,00 zł / 10 dni</mat-checkbox>
+      </div>
+      <div class="checkbox">
+        <mat-checkbox [(ngModel)]="promowanie" [ngModelOptions]="{standalone:true}">Promowanie na stronie działu – 29,00 zł / 10 dni</mat-checkbox>
+      </div>
+
+    </div>
+
+  <button mat-raised-button class="submit_draft" (click)="submitOfferDraft()">Zapisz ofertę</button>
+</form>

@@ -1,0 +1,26 @@
+<div class="section-container">
+  <div class="section-bar">
+    <button id="text-section-button" class="btn-link desc-section-bar-button" title="tylko tekst" (click)="setTextComponent()">
+      <i class="m-icon text active"></i>
+    </button>
+    <button id="img-section-button" class="btn-link desc-section-bar-button" title="tylko zdjęcie" (click)="setImageComponent()">
+      <i class="m-icon img"></i>
+    </button>
+    <button id="img-text-section-button" class="btn-link desc-section-bar-button" title="zdjęcie i tekst" (click)="setImageTextComponents()">
+      <i class="m-icon img-text"></i>
+    </button>
+    <button id="text-img-section-button" class="btn-link desc-section-bar-button" title="tekst i zdjęcie" (click)="setTextImageComponents()">
+      <i class="m-icon text-img"></i>
+    </button>
+    <button id="img-img-section-button" class="btn-link desc-section-bar-button" title="dwa zdjęcia" (click)="setTwoImageComponents()">
+      <i class="m-icon img-img"></i>
+    </button>
+    <div class="section-controls">
+      <button class="btn-link clone-section-btn desc-section-bar-button" title="duplikuj wiersz">
+        <i class="m-icon duplicate"></i>
+      </button>
+    </div>
+  </div>
+  <ng-template item-host></ng-template>
+</div>
+

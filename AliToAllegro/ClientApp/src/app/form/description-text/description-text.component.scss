@@ -1,0 +1,70 @@
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+.text-item {
+  background-color: #fff;
+  font-family: Open Sans,sans-serif;
+  word-wrap: break-word;
+}
+
+.mce-panel {
+  border: 0 solid rgba(0,0,0,0.2);
+  background-color: #f0f0f0;
+}
+
+.mce-container {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: top;
+  background: transparent;
+  //text-decoration: none;
+  color: #333;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  text-shadow: none;
+  float: none;
+  //position: static;
+  width: 100%;
+  height: 100%;
+  align-content: flex-start;
+  //white-space: nowrap;
+  cursor: inherit;
+  -webkit-tap-highlight-color: transparent;
+  line-height: normal;
+  font-weight: normal;
+  text-align: left;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  direction: ltr;
+  max-width: none;
+  display: block;
+}
+
+.mce-tinymce {
+  visibility: inherit !important;
+  //position: relative;
+}
+
+
+.mce-stack-layout-item {
+  display: block;
+}
+
+.mce-edit-area {
+  border-top-width: 0 !important;
+  border-bottom-width: 1px !important;
+  background: #FFF;
+  flex: 1 1 auto;
+  filter: none;
+  width: 100%;
+  //display: flex;
+  flex-direction: column;
+}
+
+.example-full-width {
+  width: 100%;
+  //display: inline-flex;
+  box-sizing: border-box;
+  flex-direction: column;
+}
